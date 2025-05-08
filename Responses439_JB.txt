@@ -1,0 +1,17 @@
+1. 
+After a k-mer is cut from the larger genome sequence, that specific k-mer is compared against a dictionary that either contains it or does not.
+If the dictionary does not already contain that specific k-mer, that new substring is added to the dictionary with a value of 1. 
+If that k-mer is already in the dictionary, 1 is added to the existing value. A similar logic is followed for characters following k-mers. 
+An outer dictionary tracks k-mers like the previous one, and a series of inner dictionaries count each instacne of a following character for each unique k-mer in the same way as before.
+
+2. 
+The code didn't require any tweaking to properly track the first k-mer in a sequence, as that k-mer is already included in the 0 spot for the range. 
+The last k-mer in a sequence needed to be counted without considering it for the count of following characters. 
+If it reads a k-mer and finds no character after it, this empty space is considered invalid and it is not counted, but the k-mer is still counted in the list of substrings. 
+I also included code to prevent k values outside the edges of the sequence from running, instead returning a printed message letting the person running the code know that the k is invalid.
+
+3. 
+The first function of the script uses a sliding window approach that ensures each individual substring is counted only once. 
+Because it iterates one character at a time, no single k-mer will be double counted. Following characters are counted in the same fashion. 
+The following character count also stops at len(s)-k to ensure that counting doesn't continue after the last k-mer is reached. 
+Because the whole thing is analyzed character by character, no k-mer's context is lost.
