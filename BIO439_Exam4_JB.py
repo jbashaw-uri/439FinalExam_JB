@@ -16,8 +16,10 @@ def get_k_substrings(s, k):
     
     #extracts all substrings of length k from the string
     if k <= 0 or len(s) < k:   #including part here to return a blank list if k is set to 0
-        return []
-    return [s[i:i + k] for i in range(len(s) - k + 1)]
+        print ("Invalid k value. k cannot be negative, 0, or a number greater than the total number of characters in the sequence.")
+        sys.exit()
+    else:
+        return [s[i:i + k] for i in range(len(s) - k + 1)]
 
 def count_frequencies(items):
     """
